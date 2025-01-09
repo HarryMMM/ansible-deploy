@@ -1,0 +1,6 @@
+reader_install_path: /opt/reader
+reader_package_name: reader-server-3.2.12.zip
+reader_package_src: 'files/{{ reader_package_name }}'
+reader_package_dist: '{{ reader_install_path }}/{{ reader_package_name }}'
+reader_config_file: '{{ reader_install_path }}/conf/application.properties'
+reader_config_startup_script: '{{ reader_install_path }}/bin/startup.sh'

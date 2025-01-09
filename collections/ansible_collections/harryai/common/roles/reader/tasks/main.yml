@@ -1,0 +1,35 @@
+---
+- name: Create reader directory
+  ansible.builtin.file:
+    path: '{{ reader_install_path }}'
+    state: directory
+    mode: '0755'
+
+- name: Copy to remote host
+  ansible.builtin.copy:
+    src: '{{ reader_package_src }}'
+    dest: '{{ reader_package_dist }}'
+    mode: '0755'
+
+- name: Unzip reader-server-3.2.12.zip
+  ansible.builtin.unarchive:
+    remote_src: true
+    src: '{{ reader_package_dist }}'
+    dest: '{{ reader_install_path }}'
+    mode: '0755'
+
+- name: Copy configuration file to remote host
+  ansible.builtin.copy:
+    src: files/application.properties
+    dest: '{{ reader_config_file }}'
+    mode: '0755'
+
+- name: Copy startup script to remote host
+  ansible.builtin.copy:
+    src: files/startup.sh
+    dest: '{{ reader_config_startup_script }}'
+    mode: '0755'
+
+- name: Start reader
+  ansible.builtin.command: 'bash --login {{ reader_config_startup_script }}'
+  changed_when: true
