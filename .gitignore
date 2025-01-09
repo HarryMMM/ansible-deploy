@@ -1,13 +1,13 @@
 .logs/*
 *.retry
 *.vault
-collections/*
-!collections/ansible_collections
-!collections/requirements.yml
-collections/ansible_collections/*
-!collections/ansible_collections/harryai
-collections/ansible_collections/harryai/*
-!collections/ansible_collections/harryai/ifrs17
+# collections/*
+# !collections/ansible_collections
+# !collections/requirements.yml
+# collections/ansible_collections/*
+# !collections/ansible_collections/harryai
+# collections/ansible_collections/harryai/*
+# !collections/ansible_collections/harryai/ifrs17
 # https://raw.githubusercontent.com/github/gitignore/main/Python.gitignore
 # Byte-compiled / optimized / DLL files
 __pycache__/

@@ -1,0 +1,24 @@
+---
+- name: Create java install directory
+  ansible.builtin.file:
+    path: '{{ jdk_install_path }}'
+    state: directory
+    mode: '0755'
+
+- name: Copy JDK package to remote host
+  ansible.builtin.copy:
+    src: files/OpenJDK8U-jdk_x64_linux_hotspot_8u432b06.tar.gz
+    dest: '{{ jdk_install_path }}'
+    mode: '0755'
+
+- name: Extract JDK RPM file on remote host
+  ansible.builtin.unarchive:
+    src: '{{ jdk_install_path }}/OpenJDK8U-jdk_x64_linux_hotspot_8u432b06.tar.gz'
+    dest: '{{ jdk_install_path }}'
+    remote_src: true
+
+- name: Set jvm evironment variable
+  ansible.builtin.template:
+    src: template/jdk.sh.j2
+    dest: '{{ jdk_install_profile_d_path }}/jdk.sh'
+    mode: '0644'

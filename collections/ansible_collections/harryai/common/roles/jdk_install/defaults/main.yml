@@ -1,0 +1,4 @@
+---
+jdk_install_path: '/opt/jdk'
+jdk_install_java_home: '{{ jdk_install_path }}/jdk8u432-b06'
+jdk_install_profile_d_path: '/etc/profile.d'
