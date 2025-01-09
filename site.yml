@@ -1,0 +1,5 @@
+---
+- name: Deploy Software
+  hosts: harry
+  roles:
+    - role: harryai.common.jdk_install
